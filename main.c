@@ -66,7 +66,7 @@ void *bfInterpretingThread(void* arg) {
     char *bfCode = bftd->bfcode;
     long bfsize = bftd->bfSize;
     struct Queue *inputs = bftd->inputs;
-
+    unsigned long long instructions = 0;
     BFCT *bfmem = malloc(BRAINFUCK_MEMORY_SIZE * sizeof(BFCT));
     unsigned long codeindex = 0;
     long memindex = 0;
@@ -79,10 +79,16 @@ void *bfInterpretingThread(void* arg) {
         switch (bfCode[codeindex]) {
         case '+':
             if(skippingMode != -1) break;
+            if(!BRAINFUCK_CELL_OVERFLOW_BEHAVIOUR && bfmem[memindex] == ((BFCT) -1)) {
+                exit(1);
+            }
             bfmem[memindex]++;
             break;
         case '-':
             if(skippingMode != -1) break;
+            if(!BRAINFUCK_CELL_OVERFLOW_BEHAVIOUR && bfmem[memindex] == 0) {
+                exit(1);
+            }
             bfmem[memindex]--;
             break;
         case '<':
@@ -101,7 +107,7 @@ void *bfInterpretingThread(void* arg) {
             break;
         case '.':
             if(skippingMode != -1) break;
-            printf("%c\n", bfmem[memindex]);
+            fputc(bfmem[memindex], stdout);
             break;
         case '#':
             if(skippingMode != -1) break;
@@ -137,9 +143,10 @@ void *bfInterpretingThread(void* arg) {
             }
             break;
         }
+        instructions++;
         codeindex++;
     }
-    printf("\nfinished ! \n");
+    printf("\nfinished in %llu instructions ! \n", instructions);
     free(bfmem);
     stack_free(&loopStack);
     return 0;

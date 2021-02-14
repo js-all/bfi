@@ -64,9 +64,9 @@ write the decimal value of the cell
 
 ## known issues
 
-### characters are written on new line everytime
+### characters don't display unless newline 
 
-exactly what the title says, it is done on purpose, because it just wouldn't output them otherwise
+idk why but it does, just write a new line at the end in your bf code
 
 ## changelog
 
