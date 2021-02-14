@@ -54,6 +54,14 @@ and it should work.
 
 > if it doesn't, open an issue on the githup repository, and if you're lucky enough, i might just get to think about it one day.
 
+## added instructions
+
+> those will only be for debugging purposes
+
+### \#:
+
+write the decimal value of the cell
+
 ## known issues
 
 ### characters are written on new line everytime
@@ -62,7 +70,11 @@ exactly what the title says, it is done on purpose, because it just wouldn't out
 
 ## changelog
 
-### v0.9.5 (lastest)
+### v0.9.6 (lastest)
+
+added # dump instruction (for an easier debugging), see added instruction for more details
+
+### v0.9.5
 
 added README.md
 

@@ -1,6 +1,6 @@
 /*
      ____  _____ ___  
-    | __ )|  ___|_ _|    V 0.9.5
+    | __ )|  ___|_ _|    V 0.9.6
     |  _ \| |_   | |     stdin in brainfuck
     | |_) |  _|  | |     idk what to put here
     |____/|_|   |___|    so random bullshit go
@@ -103,6 +103,10 @@ void *bfInterpretingThread(void* arg) {
             if(skippingMode != -1) break;
             printf("%c\n", bfmem[memindex]);
             break;
+        case '#':
+            if(skippingMode != -1) break;
+            printf("%u\n", bfmem[memindex]);
+            break;
         case ',':
             if(skippingMode != -1) break;
             if (!queue_is_empty(inputs)) {
@@ -182,7 +186,7 @@ char *readFileBF(char *fileName, long *fileSize) {
 }
 
 int main() {
-    printf("shitty c bf interpreter that i hope it works, v0.9.5: \n");
+    printf("shitty c bf interpreter that i hope it works, v0.9.6: \n");
     struct termios ttyStateBackup = settupTTYRaw();
     struct Queue inputs;
     pthread_t inputThread;
