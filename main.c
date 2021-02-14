@@ -1,3 +1,12 @@
+/*
+     ____  _____ ___  
+    | __ )|  ___|_ _|    V 0.9.5
+    |  _ \| |_   | |     stdin in brainfuck
+    | |_) |  _|  | |     idk what to put here
+    |____/|_|   |___|    so random bullshit go
+
+*/
+
 #include "queue.h"
 #include "stack.h"
 #include <assert.h>
@@ -173,7 +182,7 @@ char *readFileBF(char *fileName, long *fileSize) {
 }
 
 int main() {
-    printf("shitty c bf interpreter that i hope it works, v0.0.1: \n");
+    printf("shitty c bf interpreter that i hope it works, v0.9.5: \n");
     struct termios ttyStateBackup = settupTTYRaw();
     struct Queue inputs;
     pthread_t inputThread;
