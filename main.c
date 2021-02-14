@@ -19,7 +19,7 @@
 
 // brainfuck config
 #define BRAINFUCK_MEMORY_SIZE 30000
-#define BRAINFUCK_CELL_TYPE unsigned int
+#define BRAINFUCK_CELL_TYPE unsigned short
 // 0 -> abort
 // 1 -> wrap
 #define BRAINFUCK_CELL_OVERFLOW_BEHAVIOUR 1
@@ -139,7 +139,7 @@ void *bfInterpretingThread(void* arg) {
         }
         codeindex++;
     }
-    printf("\n");
+    printf("\nfinished ! \n");
     free(bfmem);
     stack_free(&loopStack);
     return 0;
@@ -147,7 +147,7 @@ void *bfInterpretingThread(void* arg) {
 
 bool isBFChar(char *c) {
     if (*c == '+' || *c == '-' || *c == '<' || *c == '>' || *c == '[' ||
-            *c == ']' || *c == '.' || *c == ',')
+            *c == ']' || *c == '.' || *c == ',' || *c == '#')
         return true;
     else
         return false;

@@ -102,5 +102,5 @@ void queue_display(struct Queue *queue) {
 }
 
 void queue_free(struct Queue *queue) {
-    free(queue);
+    free(queue->data);
 }

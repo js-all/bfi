@@ -91,5 +91,5 @@ void stack_display(struct Stack *stack) {
 }
 
 void stack_free(struct Stack *stack) {
-    free(stack);
+    free(stack->data);
 }

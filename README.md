@@ -74,6 +74,8 @@ exactly what the title says, it is done on purpose, because it just wouldn't out
 
 added # dump instruction (for an easier debugging), see added instruction for more details
 
+and fixed segmentation fault when bf finished its execution.
+
 ### v0.9.5
 
 added README.md
