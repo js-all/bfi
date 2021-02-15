@@ -7,4 +7,4 @@ gcc -Wall -c -pthread ./main.c
 gcc -pthread -o bfi ./queue.o ./stack.o ./main.o
 rm ./*.o
 chmod +x bfi
-./bfi
+#./bfi

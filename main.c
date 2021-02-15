@@ -75,6 +75,7 @@ void *bfInterpretingThread(void* arg) {
     long ci;
     // -1 for disabled, otherwise the codeindex of where it started
     long skippingMode = -1;
+    printf("running brainfuck code.... \n\n");
     while (codeindex < bfsize) {
         switch (bfCode[codeindex]) {
         case '+':
@@ -107,7 +108,7 @@ void *bfInterpretingThread(void* arg) {
             break;
         case '.':
             if(skippingMode != -1) break;
-            fputc(bfmem[memindex], stdout);
+            putchar(bfmem[memindex]);
             break;
         case '#':
             if(skippingMode != -1) break;
@@ -146,7 +147,7 @@ void *bfInterpretingThread(void* arg) {
         instructions++;
         codeindex++;
     }
-    printf("\nfinished in %llu instructions ! \n", instructions);
+    printf("\n\nfinished in %llu instructions ! \n", instructions);
     free(bfmem);
     stack_free(&loopStack);
     return 0;
@@ -194,6 +195,7 @@ char *readFileBF(char *fileName, long *fileSize) {
 
 int main() {
     printf("shitty c bf interpreter that i hope it works, v0.9.6: \n");
+    printf("\n");
     struct termios ttyStateBackup = settupTTYRaw();
     struct Queue inputs;
     pthread_t inputThread;
@@ -216,7 +218,6 @@ int main() {
     pthread_create(&bfThread, NULL, bfInterpretingThread, &bftd);
     pthread_join(bfThread, NULL);
 
-    pthread_cancel(inputThread);
     queue_free(&inputs);
     pthread_mutex_destroy(&lock);
     resetTTYState(&ttyStateBackup);
