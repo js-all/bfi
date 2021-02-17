@@ -112,7 +112,7 @@ void *bfInterpretingThread(void* arg) {
             break;
         case '#':
             if(skippingMode != -1) break;
-            printf("%u\n", bfmem[memindex]);
+            printf("%u at %ld\n", bfmem[memindex], memindex);
             break;
         case ',':
             if(skippingMode != -1) break;
@@ -147,7 +147,7 @@ void *bfInterpretingThread(void* arg) {
         instructions++;
         codeindex++;
     }
-    printf("\n\nfinished in %llu instructions ! \n", instructions);
+    printf("\n\nfinished in %llu instructions ! at index %ld \n", instructions, memindex);
     free(bfmem);
     stack_free(&loopStack);
     return 0;
